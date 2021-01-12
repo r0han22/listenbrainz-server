@@ -159,7 +159,7 @@ def init_error_handlers(app):
     def file_size_too_large(error):
         return handle_error(error, 413)
 
-    @app.errorhandler(500)
+    @app.errorhandler(Exception)
     def internal_server_error(error):
         if request.path.startswith(API_PREFIX):
             error = APIError("An unknown error occured.", 500)
