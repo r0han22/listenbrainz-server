@@ -1,6 +1,16 @@
-FROM metabrainz/python:3.7-20190302 as listenbrainz-base
+ARG PYTHON_BASE_IMAGE_VERSION=3.7-20190302
+FROM metabrainz/python:$PYTHON_BASE_IMAGE_VERSION as listenbrainz-base
 
 ARG deploy_env
+ARG VCS_REF
+
+LABEL org.label-schema.vcs-url="https://github.com/metabrainz/listenbrainz-server.git" \
+      org.label-schema.vcs-ref=$VCS_REF \
+      org.label-schema.schema-version="1.0.0-rc1" \
+      org.label-schema.vendor="MetaBrainz Foundation" \
+      org.label-schema.name="ListenBrainz" \
+      org.metabrainz.based-on-image="metabrainz/python:$PYTHON_BASE_IMAGE_VERSION"
+
 
 ENV DOCKERIZE_VERSION v0.6.1
 RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
