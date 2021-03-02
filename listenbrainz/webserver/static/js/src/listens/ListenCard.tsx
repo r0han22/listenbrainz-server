@@ -155,7 +155,7 @@ export default class ListenCard extends React.Component<
       >
         <div
           className={`${
-            isCurrentUser || mode === "recent" || mode === "follow"
+            isCurrentUser || mode === "recent"
               ? " col-xs-9"
               : " col-xs-12"
           }`}
@@ -239,12 +239,12 @@ export default class ListenCard extends React.Component<
         </div>
         <div
           className={`${
-            isCurrentUser || mode === "recent" || mode === "follow"
+            isCurrentUser || mode === "recent"
               ? " col-xs-3 text-center"
               : "hidden"
           }`}
         >
-          {mode === "follow" || mode === "recent" ? (
+          {mode === "recent" ? (
             <a
               href={`/user/${listen.user_name}`}
               target="_blank"
